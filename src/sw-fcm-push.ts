@@ -16,16 +16,10 @@ precacheAndRoute(self.__WB_MANIFEST)
 // Firebase App と Messaging をインポート
 import { initializeApp } from 'firebase/app'
 import { getMessaging, onBackgroundMessage } from 'firebase/messaging/sw'
+import getFirebaseConfig from './firebase-config-shared'
 
-// Firebase 設定
-const firebaseConfig = {
-  apiKey: "AIzaSyCUNhaQQR70dL7WpERhFc1uwFst8LDF7Vs",
-  authDomain: "test-995a0.firebaseapp.com",
-  projectId: "test-995a0",
-  storageBucket: "test-995a0.firebasestorage.app",
-  messagingSenderId: "701878483294",
-  appId: "1:701878483294:web:1c2b54efdb5a8d203837cf"
-}
+// Firebase 設定（環境変数から取得）
+const firebaseConfig = getFirebaseConfig()
 
 // Firebase を初期化
 const app = initializeApp(firebaseConfig)
