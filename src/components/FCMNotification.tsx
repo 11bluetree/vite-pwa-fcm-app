@@ -228,32 +228,6 @@ const FCMNotification: React.FC<FCMNotificationProps> = ({ className = '' }) => 
           </div>
         </details>
       )}
-
-      {/* 使用方法の説明 */}
-      <details className="usage-info">
-        <summary>ℹ️ 使用方法</summary>
-        <div className="usage-content">
-          <ol>
-            <li>「プッシュ通知を開始」ボタンをクリック</li>
-            <li>ブラウザの通知権限を許可</li>
-            <li>生成された FCM トークンをコピー</li>
-            <li>Firebase Console の「Cloud Messaging」からテスト通知を送信</li>
-            <li>または、サーバーからトークンを使用して通知を送信</li>
-            <li>不要になったら「通知を停止」で通知を停止</li>
-          </ol>
-          
-          <h4>📡 Firebase Console での送信方法</h4>
-          <ol>
-            <li>Firebase Console → プロジェクト → Messaging</li>
-            <li>「最初のキャンペーンを作成」または「新しいキャンペーン」</li>
-            <li>「Firebase Notification メッセージ」を選択</li>
-            <li>通知のタイトルと本文を入力</li>
-            <li>「テストメッセージを送信」をクリック</li>
-            <li>コピーした FCM トークンを貼り付け</li>
-            <li>「テスト」をクリック</li>
-          </ol>
-        </div>
-      </details>
     </div>
   )
 }

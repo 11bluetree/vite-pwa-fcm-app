@@ -243,30 +243,6 @@ details[open] summary {
   color: #e0e0e0;
 }
 
-/* 使用方法 */
-.usage-content {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  padding: 16px;
-}
-
-.usage-content ol {
-  margin: 12px 0;
-  padding-left: 20px;
-}
-
-.usage-content li {
-  margin: 8px 0;
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
-.usage-content h4 {
-  margin: 20px 0 12px 0;
-  color: #ffffff;
-  font-size: 1.1rem;
-}
-
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .fcm-notification {
