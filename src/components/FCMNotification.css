@@ -1,0 +1,311 @@
+/* FCM Notification Component Styles */
+.fcm-notification {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 20px 0;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.fcm-notification h3 {
+  margin: 0 0 20px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* エラーメッセージ */
+.error-message {
+  background: rgba(220, 53, 69, 0.2);
+  border: 1px solid rgba(220, 53, 69, 0.4);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.error {
+  color: #ff6b6b;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ステータス表示 */
+.status {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.status p {
+  margin: 8px 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.permission-status {
+  font-size: 0.9rem !important;
+  opacity: 0.8;
+}
+
+/* コントロールボタン */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.fcm-active {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.controls button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.init-btn {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+}
+
+.init-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #45a049, #3d8b40);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.test-btn {
+  background: linear-gradient(135deg, #2196F3, #1976D2);
+  color: white;
+  flex: 1;
+}
+
+.test-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1976D2, #1565C0);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+}
+
+.copy-btn {
+  background: linear-gradient(135deg, #FF9800, #F57C00);
+  color: white;
+  flex: 1;
+}
+
+.copy-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #F57C00, #EF6C00);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+}
+
+.copy-btn.copy-success {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+}
+
+.controls button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 詳細セクション */
+details {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+summary {
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 12px;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+summary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+details[open] summary {
+  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* トークン表示 */
+.token-container {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.token-display {
+  width: 100%;
+  min-height: 120px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 12px;
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  resize: vertical;
+  word-break: break-all;
+}
+
+.token-display:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.token-info {
+  margin: 12px 0 0 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* メッセージ表示 */
+.message-container {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.message-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.notification-part,
+.data-part {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.notification-part h4,
+.data-part h4 {
+  margin: 0 0 12px 0;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.notification-part p {
+  margin: 6px 0;
+  font-size: 0.9rem;
+}
+
+.data-part pre {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  padding: 12px;
+  margin: 0;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  color: #e0e0e0;
+}
+
+/* 使用方法 */
+.usage-content {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.usage-content ol {
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+.usage-content li {
+  margin: 8px 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.usage-content h4 {
+  margin: 20px 0 12px 0;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .fcm-notification {
+    padding: 16px;
+    margin: 16px 0;
+  }
+  
+  .fcm-active {
+    flex-direction: column;
+  }
+  
+  .controls button {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .token-display {
+    font-size: 0.8rem;
+    min-height: 100px;
+  }
+}
+
+/* ダークモード対応 */
+@media (prefers-color-scheme: dark) {
+  .fcm-notification {
+    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+  }
+  
+  .token-display {
+    background: rgba(0, 0, 0, 0.5);
+    color: #e0e0e0;
+  }
+}
+
+/* アニメーション */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fcm-notification {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* フォーカス表示の改善 */
+.controls button:focus,
+summary:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
