@@ -37,27 +37,33 @@ This app includes a complete push notification system with:
    - Once subscribed, use the "テスト通知を送信" (Send Test Notification) button
    - Notifications will appear even when the browser tab is not active
 
-4. **Unsubscribe**:
-   - Click "購読を解除" (Unsubscribe) to stop receiving notifications
+4. **Stop Notifications**:
+   - Click "通知を停止" (Stop Notifications) to completely unsubscribe and delete the FCM token
 
 ### Files Structure
 
 ```
 src/
-├── sw-push.ts              # Service Worker with push notification handlers
-├── PushNotification.tsx    # React component for notification management
-├── PushNotification.css    # Styles for the notification component
-├── App.tsx                 # Main app component (updated to include notifications)
+├── sw-fcm-push.ts               # FCM Service Worker with background message handlers
+├── components/
+│   ├── FCMNotification.tsx      # FCM React component for notification management
+│   └── FCMNotification.css      # Styles for the FCM notification component
+├── services/
+│   └── fcm-service.ts           # FCM token management and messaging service
+├── firebase-config.ts           # Firebase app initialization
+├── firebase-config-shared.ts    # Shared Firebase configuration
+├── App.tsx                      # Main app component (updated to include FCM notifications)
 └── ...
 ```
 
-### VAPID Keys
+### Firebase Cloud Messaging
 
-The current implementation uses a demo VAPID public key. For production use:
+This app uses Firebase Cloud Messaging (FCM) for push notifications:
 
-1. Generate your own VAPID key pair
-2. Replace the `VAPID_PUBLIC_KEY` in `PushNotification.tsx`
-3. Use the private key on your server for sending notifications
+1. FCM tokens are automatically managed by Firebase
+2. No VAPID keys required - Firebase handles everything
+3. Send test notifications via Firebase Console
+4. Use FCM tokens for programmatic notification sending
 
 ## Development
 
