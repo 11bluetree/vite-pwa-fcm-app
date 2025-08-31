@@ -152,7 +152,7 @@ const FCMNotification: React.FC<FCMNotificationProps> = ({ className = '' }) => 
             disabled={isLoading}
             className="subscribe-btn"
           >
-            {isLoading ? '🔄 購読開始中...' : '🤚 プッシュ通知を購読'}
+            {isLoading ? '🔄 購読開始中...' : '🤚 プッシュ通知を開始'}
           </button>
         ) : (
           <div className="fcm-active">
@@ -177,7 +177,7 @@ const FCMNotification: React.FC<FCMNotificationProps> = ({ className = '' }) => 
               disabled={isLoading}
               className="unsubscribe-btn"
             >
-              🚫 購読を解除
+              🚫 通知を停止
             </button>
           </div>
         )}
@@ -234,12 +234,12 @@ const FCMNotification: React.FC<FCMNotificationProps> = ({ className = '' }) => 
         <summary>ℹ️ 使用方法</summary>
         <div className="usage-content">
           <ol>
-            <li>「プッシュ通知を購読」ボタンをクリック</li>
+            <li>「プッシュ通知を開始」ボタンをクリック</li>
             <li>ブラウザの通知権限を許可</li>
             <li>生成された FCM トークンをコピー</li>
             <li>Firebase Console の「Cloud Messaging」からテスト通知を送信</li>
             <li>または、サーバーからトークンを使用して通知を送信</li>
-            <li>不要になったら「購読を解除」で購読を停止</li>
+            <li>不要になったら「通知を停止」で通知を停止</li>
           </ol>
           
           <h4>📡 Firebase Console での送信方法</h4>
