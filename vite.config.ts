@@ -10,7 +10,7 @@ export default defineConfig({
 
     strategies: 'injectManifest',
     srcDir: 'src',
-    filename: 'sw-push.ts',
+    filename: 'sw-fcm-push.ts',
 
     pwaAssets: {
       disabled: false,
