@@ -12,4 +12,5 @@ const firebaseConfig = getFirebaseConfig();
 export const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Cloud Messaging and get a reference to the service
+// カスタム Service Worker を使用するため、navigator.serviceWorker.ready を待つ
 export const messaging = getMessaging(app);

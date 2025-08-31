@@ -59,10 +59,15 @@ export const getFCMToken = async (): Promise<FCMTokenResult> => {
     }
 
     // Service Worker が ready になるまで待機
-    await navigator.serviceWorker.ready;
+    const registration = await navigator.serviceWorker.ready;
+    
+    // カスタム Service Worker が登録されていることを確認
+    console.log('Service Worker registration:', registration.scope);
 
-    // FCM トークンを取得（VAPID キーなし - Firebase が自動管理）
-    const token = await getToken(messaging);
+    // FCM トークンを取得（カスタム Service Worker を使用）
+    const token = await getToken(messaging, {
+      serviceWorkerRegistration: registration,
+    });
 
     if (!token) {
       return {

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import appLogo from '/favicon.svg'
 import PWABadge from './PWABadge.tsx'
-import PushNotification from './PushNotification.tsx'
+import FCMNotification from './components/FCMNotification.tsx'
 import './App.css'
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <PushNotification />
+      <FCMNotification />
       <PWABadge />
     </>
   )
