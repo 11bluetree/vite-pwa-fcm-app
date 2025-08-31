@@ -4,6 +4,7 @@ import {
   onForegroundMessage,
   showLocalNotification,
   copyTokenToClipboard,
+  deleteFCMToken,
   FCMMessage,
   FCMTokenResult
 } from '../services/fcm-service'
@@ -42,16 +43,33 @@ const FCMNotification: React.FC<FCMNotificationProps> = ({ className = '' }) => 
   }, [])
 
   // FCM 購読を解除
-  const stopSubscription = useCallback(() => {
-    setTokenResult({ token: null })
+  const stopSubscription = useCallback(async () => {
+    setIsLoading(true)
     setError(null)
-    setLastMessage(null)
-    setCopySuccess(false)
-    
-    showLocalNotification('購読を解除しました', {
-      body: 'FCM プッシュ通知の購読を解除しました',
-      icon: '/favicon.svg'
-    })
+
+    try {
+      // Firebase側でトークンを削除
+      const result = await deleteFCMToken()
+      
+      if (result.success) {
+        // ローカル状態をリセット
+        setTokenResult({ token: null })
+        setLastMessage(null)
+        setCopySuccess(false)
+        
+        showLocalNotification('通知を停止しました', {
+          body: 'FCM プッシュ通知を完全に停止しました',
+          icon: '/favicon.svg'
+        })
+      } else {
+        setError(result.error || 'トークンの削除に失敗しました')
+      }
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : '通知の停止に失敗しました'
+      setError(errorMessage)
+    } finally {
+      setIsLoading(false)
+    }
   }, [])
 
   // フォアグラウンドメッセージの監視
@@ -177,7 +195,7 @@ const FCMNotification: React.FC<FCMNotificationProps> = ({ className = '' }) => 
               disabled={isLoading}
               className="unsubscribe-btn"
             >
-              🚫 通知を停止
+              {isLoading ? '🔄 停止中...' : '🚫 通知を停止'}
             </button>
           </div>
         )}

@@ -1,4 +1,4 @@
-import { getToken, onMessage, Unsubscribe } from 'firebase/messaging';
+import { getToken, onMessage, deleteToken, Unsubscribe } from 'firebase/messaging';
 import { messaging } from '../firebase-config';
 
 /**
@@ -161,5 +161,31 @@ export const copyTokenToClipboard = async (token: string): Promise<boolean> => {
   } catch (error) {
     console.error('クリップボードへのコピーに失敗:', error);
     return false;
+  }
+};
+
+/**
+ * FCM トークンを削除して購読を完全に解除する
+ */
+export const deleteFCMToken = async (): Promise<{ success: boolean; error?: string }> => {
+  try {
+    if (!messaging) {
+      return {
+        success: false,
+        error: 'Firebase Messaging が初期化されていません'
+      };
+    }
+
+    await deleteToken(messaging);
+    
+    return {
+      success: true
+    };
+  } catch (error) {
+    console.error('FCM トークンの削除に失敗:', error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'トークンの削除に失敗しました'
+    };
   }
 };
