@@ -20,8 +20,8 @@ const FCMNotification: React.FC<FCMNotificationProps> = ({ className = '' }) => 
   const [lastMessage, setLastMessage] = useState<FCMMessage | null>(null)
   const [copySuccess, setCopySuccess] = useState(false)
 
-  // FCM トークンを取得
-  const initializeFCM = useCallback(async () => {
+  // FCM 購読を開始
+  const startSubscription = useCallback(async () => {
     setIsLoading(true)
     setError(null)
 
@@ -33,12 +33,25 @@ const FCMNotification: React.FC<FCMNotificationProps> = ({ className = '' }) => 
         setError(result.error)
       }
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'FCM の初期化に失敗しました'
+      const errorMessage = err instanceof Error ? err.message : 'FCM の購読開始に失敗しました'
       setError(errorMessage)
       setTokenResult({ token: null, error: errorMessage })
     } finally {
       setIsLoading(false)
     }
+  }, [])
+
+  // FCM 購読を解除
+  const stopSubscription = useCallback(() => {
+    setTokenResult({ token: null })
+    setError(null)
+    setLastMessage(null)
+    setCopySuccess(false)
+    
+    showLocalNotification('購読を解除しました', {
+      body: 'FCM プッシュ通知の購読を解除しました',
+      icon: '/favicon.svg'
+    })
   }, [])
 
   // フォアグラウンドメッセージの監視
@@ -123,7 +136,7 @@ const FCMNotification: React.FC<FCMNotificationProps> = ({ className = '' }) => 
       
       <div className="status">
         <p>
-          🔔 FCM 状態: {tokenResult.token ? '✅ 有効' : '❌ 無効'}
+          🔔 購読状態: {tokenResult.token ? '✅ 購読中' : '❌ 未購読'}
         </p>
         {tokenResult.token && (
           <p className="permission-status">
@@ -135,11 +148,11 @@ const FCMNotification: React.FC<FCMNotificationProps> = ({ className = '' }) => 
       <div className="controls">
         {!tokenResult.token ? (
           <button
-            onClick={initializeFCM}
+            onClick={startSubscription}
             disabled={isLoading}
-            className="init-btn"
+            className="subscribe-btn"
           >
-            {isLoading ? '🔄 初期化中...' : '🚀 FCM を初期化'}
+            {isLoading ? '🔄 購読開始中...' : '🤚 プッシュ通知を購読'}
           </button>
         ) : (
           <div className="fcm-active">
@@ -157,6 +170,14 @@ const FCMNotification: React.FC<FCMNotificationProps> = ({ className = '' }) => 
               className={`copy-btn ${copySuccess ? 'copy-success' : ''}`}
             >
               {copySuccess ? '✅ コピー完了' : '📋 トークンをコピー'}
+            </button>
+            
+            <button
+              onClick={stopSubscription}
+              disabled={isLoading}
+              className="unsubscribe-btn"
+            >
+              🚫 購読を解除
             </button>
           </div>
         )}
@@ -213,11 +234,12 @@ const FCMNotification: React.FC<FCMNotificationProps> = ({ className = '' }) => 
         <summary>ℹ️ 使用方法</summary>
         <div className="usage-content">
           <ol>
-            <li>「FCM を初期化」ボタンをクリック</li>
+            <li>「プッシュ通知を購読」ボタンをクリック</li>
             <li>ブラウザの通知権限を許可</li>
             <li>生成された FCM トークンをコピー</li>
             <li>Firebase Console の「Cloud Messaging」からテスト通知を送信</li>
             <li>または、サーバーからトークンを使用して通知を送信</li>
+            <li>不要になったら「購読を解除」で購読を停止</li>
           </ol>
           
           <h4>📡 Firebase Console での送信方法</h4>

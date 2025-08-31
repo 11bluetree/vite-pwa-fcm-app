@@ -81,15 +81,29 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.init-btn {
+.init-btn,
+.subscribe-btn {
   background: linear-gradient(135deg, #4CAF50, #45a049);
   color: white;
 }
 
-.init-btn:hover:not(:disabled) {
+.init-btn:hover:not(:disabled),
+.subscribe-btn:hover:not(:disabled) {
   background: linear-gradient(135deg, #45a049, #3d8b40);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.unsubscribe-btn {
+  background: linear-gradient(135deg, #f44336, #d32f2f);
+  color: white;
+  flex: 1;
+}
+
+.unsubscribe-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #d32f2f, #c62828);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
 }
 
 .test-btn {
